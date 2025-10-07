@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>Brain Tumor Detection AI</h1>
+            </div>
+            <p class="subtitle">Advanced CNN-powered medical imaging analysis</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-card">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h2>Upload Brain Scan Image</h2>
+                    <p>Upload a brain MRI or CT scan image for tumor detection analysis</p>
+                    <div class="warning-note">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <small>Note: This model may show bias due to class imbalance in training data. Results should be interpreted with caution.</small>
+                    </div>
+                    
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <div class="file-input-wrapper">
+                            <input type="file" id="fileInput" name="file" accept="image/*" required>
+                            <label for="fileInput" class="file-input-label">
+                                <i class="fas fa-image"></i>
+                                <span>Choose Image File</span>
+                            </label>
+                        </div>
+                        
+                        <div class="image-preview" id="imagePreview" style="display: none;">
+                            <img id="previewImg" src="" alt="Preview">
+                        </div>
+                        
+                        <button type="submit" class="analyze-btn" id="analyzeBtn" disabled>
+                            <i class="fas fa-search"></i>
+                            <span>Analyze Image</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-card">
+                    <h3>Analysis Results</h3>
+                    <div class="result-content">
+                        <div class="prediction" id="predictionResult">
+                            <!-- Results will be displayed here -->
+                        </div>
+                        <div class="confidence" id="confidenceResult">
+                            <!-- Confidence will be displayed here -->
+                        </div>
+                    </div>
+                    <button class="new-analysis-btn" onclick="resetForm()">
+                        <i class="fas fa-plus"></i>
+                        New Analysis
+                    </button>
+                </div>
+            </div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing image...</p>
+            </div>
+
+            <div class="error" id="error" style="display: none;">
+                <div class="error-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p id="errorMessage"></p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Brain Tumor Detection AI. For educational and research purposes only.</p>
+                <div class="footer-links">
+                    <a href="#" onclick="showInfo()">
+                        <i class="fas fa-info-circle"></i>
+                        About
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Info Modal -->
+    <div class="modal" id="infoModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Brain Tumor Detection AI</h3>
+                <button class="close-btn" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>This application uses a Convolutional Neural Network (CNN) to analyze brain scan images and detect potential tumors.</p>
+                <h4>Features:</h4>
+                <ul>
+                    <li>Deep learning-based image analysis</li>
+                    <li>Real-time tumor detection</li>
+                    <li>Confidence scoring</li>
+                    <li>Support for various image formats</li>
+                </ul>
+                <h4>Disclaimer:</h4>
+                <p>This tool is for educational and research purposes only. It should not be used as a substitute for professional medical diagnosis.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
