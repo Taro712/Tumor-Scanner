@@ -173,8 +173,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **GitHub**: [Your GitHub Profile](https://github.com/yourusername)
-- **Email**: your.email@example.com
+- **Email**: haroonzahir2@gmail.com
 
 ## 🙏 Acknowledgments
 
